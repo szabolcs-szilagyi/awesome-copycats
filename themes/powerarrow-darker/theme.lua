@@ -11,6 +11,8 @@ local lain  = require("lain")
 local awful = require("awful")
 local wibox = require("wibox")
 local os    = { getenv = os.getenv }
+local spotify = require("spotify")
+spotify.init()
 
 local theme                                     = {}
 theme.dir                                       = os.getenv("HOME") .. "/.config/awesome/themes/powerarrow-darker"
@@ -294,7 +296,8 @@ function theme.at_screen_connect(s)
             spr,
             arrl_ld,
             wibox.container.background(mpdicon, theme.bg_focus),
-            wibox.container.background(theme.mpd.widget, theme.bg_focus),
+            wibox.container.background(spotify.widget, theme.bg_focus),
+            --wibox.container.background(theme.mpd.widget, theme.bg_focus),
             arrl_dl,
             volicon,
             theme.volume.widget,
